@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Solar Dry House</title>
 <meta name="description" content="Drying times, live weather and a materials guide for a solar dry house.">
-<meta name="theme-color" content="#2F5D50" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#121815" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F6F7F3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111613" media="(prefers-color-scheme: dark)">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
@@ -15,28 +15,41 @@
 <meta name="apple-mobile-web-app-title" content="Dry House">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <header class="top">
-  <a class="brand" href="#today" aria-label="Solar Dry House home">
-    <img src="icons/icon.svg" alt="" width="30" height="30">
+  <a class="brand" href="#home" aria-label="Solar Dry House home">
+    <img src="icons/icon.svg" alt="" width="32" height="32">
     <span>Solar Dry House</span>
   </a>
   <nav class="tabs" aria-label="Main">
-    <a href="#today" data-tab="today"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg><span>Weather</span></a>
-    <a href="#materials" data-tab="materials"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg><span>Materials</span></a>
-    <a href="#calc" data-tab="calc"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 12h2M14 12h2M8 16h2M14 16h2"/></svg><span>Calculator</span></a>
-    <a href="#guide" data-tab="guide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V8l8-5 8 5v11z"/><path d="M8 19v-6h8v6"/></svg><span>Guide</span></a>
+    <a href="#home" data-tab="home"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><span>Today</span></a>
+    <a href="#materials" data-tab="materials"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20c0-8 5-14 14-15-1 9-7 14-14 15z"/><path d="M5 20l7-7"/></svg><span>Materials</span></a>
+    <a href="#calc" data-tab="calc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1.2 11.2a2 2 0 0 1-2 1.8H9.2a2 2 0 0 1-2-1.8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span>Batch</span></a>
+    <a href="#guide" data-tab="guide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h18"/><path d="M5 20V11q7-8 14 0v9"/><path d="M9 15h6"/></svg><span>Guide</span></a>
   </nav>
+  <button class="place-chip" id="placeBtn" type="button" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span id="placeName"></span></button>
 </header>
 
 <main id="view" tabindex="-1"></main>
 
+
+<dialog class="sheet" id="placeSheet" aria-labelledby="placeTitle">
+  <form method="dialog" class="sheet-in" id="placeForm">
+    <div class="sheet-head"><h2 id="placeTitle">Where is your dry house?</h2><button class="icon-btn" value="cancel" aria-label="Close">×</button></div>
+    <p class="muted">The forecast and drying dates are worked out for this place.</p>
+    <input class="input" id="placeInput" type="search" placeholder="Type your town or village" autocomplete="off" aria-label="Town or village">
+    <ul class="places" id="placeList"></ul>
+    <button class="btn ghost" id="placeGps" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/><circle cx="12" cy="12" r="7"/></svg>Use my current location</button>
+  </form>
+</dialog>
+
 <template id="guide-tpl">
   <section class="page">
     <div class="page-head">
+      <span class="eyebrow">Guide</span>
       <h1>How the dry house works</h1>
       <p class="lede">A solar dry house is a closed greenhouse built for drying, not growing. Sunlight passes through the clear roof and heats a black floor, which warms the air. Fans pull that warm air across the trays and push the moisture out. Produce dries faster and stays clean, safe from rain, dust, birds and insects.</p>
     </div>
