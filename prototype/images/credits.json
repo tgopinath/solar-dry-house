@@ -1,0 +1,408 @@
+{
+ "red-chilli": {
+  "query": "dried red chillies",
+  "file": "Dried Korean red chillies.jpg",
+  "author": "ally j",
+  "license": "CC0",
+  "page": "https://commons.wikimedia.org/wiki/File:Dried_Korean_red_chillies.jpg"
+ },
+ "turmeric": {
+  "query": "turmeric rhizome",
+  "file": "Curcuma longa roots.jpg",
+  "author": "Simon A. Eugster",
+  "license": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Curcuma_longa_roots.jpg"
+ },
+ "ginger": {
+  "query": "ginger rhizome root",
+  "file": "Ginger Root (179871501).jpeg",
+  "author": "Mark Turnauckas",
+  "license": "CC BY 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Ginger_Root_(179871501).jpeg"
+ },
+ "black-pepper": {
+  "query": "black peppercorns",
+  "file": "Tellicherry Black Peppercorns.jpg",
+  "author": "Misterneedlemouse",
+  "license": "CC0",
+  "page": "https://commons.wikimedia.org/wiki/File:Tellicherry_Black_Peppercorns.jpg"
+ },
+ "cardamom": {
+  "query": "cardamom pods spice",
+  "file": "Cardamom pods on plant.jpg",
+  "author": "Rohini",
+  "license": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Cardamom_pods_on_plant.jpg"
+ },
+ "coriander-seed": {
+  "query": "coriander seeds",
+  "file": "Coriander Seeds.jpg",
+  "author": "Sanjay Acharya",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Coriander_Seeds.jpg"
+ },
+ "garlic": {
+  "query": "garlic bulbs",
+  "file": "Garlic bulbs and cloves.jpg",
+  "author": "Ivar Leidus",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Garlic_bulbs_and_cloves.jpg"
+ },
+ "tamarind": {
+  "query": "Tamarindus indica fruit",
+  "file": "Tamarind fruits (Tamarindus indica 'Si Thong').jpg",
+  "author": "Ivar Leidus",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Tamarind_fruits_(Tamarindus_indica_%27Si_Thong%27).jpg"
+ },
+ "curry-leaves": {
+  "query": "curry leaves",
+  "file": "20260317 Murraya koenigii 02.jpg",
+  "author": "Flocci Nivis",
+  "license": "CC BY 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:20260317_Murraya_koenigii_02.jpg"
+ },
+ "moringa": {
+  "query": "moringa leaves",
+  "file": "Moringa leaves powder.jpg",
+  "author": "Satyalatha",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Moringa_leaves_powder.jpg"
+ },
+ "mint": {
+  "article": "Mentha",
+  "file": "Mentha_spicata-IMG_6186.jpg",
+  "author": "C T Johansson",
+  "license": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Mentha_spicata-IMG_6186.jpg"
+ },
+ "coriander-leaves": {
+  "query": "coriander leaves bunch",
+  "file": "Bunches of coriander leaves.jpg",
+  "author": "Kpsudeep",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Bunches_of_coriander_leaves.jpg"
+ },
+ "tulsi": {
+  "article": "Ocimum tenuiflorum",
+  "file": "Tulsi_or_Tulasi_Holy_basil.jpg",
+  "author": "Shashidhara halady",
+  "license": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Tulsi_or_Tulasi_Holy_basil.jpg"
+ },
+ "neem": {
+  "query": "Azadirachta indica leaves",
+  "file": "Leaves Azadirachta indica Heritage tree Philippines.jpg",
+  "author": "P1898",
+  "license": "CC BY 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Leaves_Azadirachta_indica_Heritage_tree_Philippines.jpg"
+ },
+ "fenugreek-leaves": {
+  "query": "fenugreek leaves methi",
+  "file": "Methi Bhaji (Fenugreek leaves with potato) (1303338041).jpg",
+  "author": "rovingI",
+  "license": "CC BY 2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Methi_Bhaji_(Fenugreek_leaves_with_potato)_(1303338041).jpg"
+ },
+ "rose": {
+  "query": "pink rose petals",
+  "file": "Rose Pink Petals (2533117675).jpg",
+  "author": "Sharon Mollerus",
+  "license": "CC BY 2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Rose_Pink_Petals_(2533117675).jpg"
+ },
+ "marigold": {
+  "article": "Tagetes erecta",
+  "file": "Tagetes_x_erecta1.jpg",
+  "author": "Unknown",
+  "license": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Tagetes_x_erecta1.jpg"
+ },
+ "hibiscus": {
+  "article": "Hibiscus rosa-sinensis",
+  "file": "Hibiscus_Brilliant.jpg",
+  "author": "Andy / Andrew Fogg from near Cambridge, UK",
+  "license": "CC BY 2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Hibiscus_Brilliant.jpg"
+ },
+ "mango": {
+  "article": "Dried mango",
+  "file": "Манго_сушеное.jpg",
+  "author": "Pannet",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:%D0%9C%D0%B0%D0%BD%D0%B3%D0%BE_%D1%81%D1%83%D1%88%D0%B5%D0%BD%D0%BE%D0%B5.jpg"
+ },
+ "banana": {
+  "article": "Banana chips",
+  "file": "Chips_de_bananes_de_São_Tomé-et-Príncipe.jpg",
+  "author": "Ji-Elle",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Chips_de_bananes_de_S%C3%A3o_Tom%C3%A9-et-Pr%C3%ADncipe.jpg"
+ },
+ "grapes": {
+  "article": "Raisin",
+  "file": "Raisins_01.jpg",
+  "author": "Paweł Kuźniar (Jojo_1, Jojo)",
+  "license": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Raisins_01.jpg"
+ },
+ "jackfruit": {
+  "query": "jackfruit bulbs",
+  "file": "DFC 4176 Golden jackfruit bulbs piled together ready to eat.jpg",
+  "author": "PattayaPatrol",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:DFC_4176_Golden_jackfruit_bulbs_piled_together_ready_to_eat.jpg"
+ },
+ "papaya": {
+  "query": "papaya fruit cut",
+  "file": "Papaya cut half.jpg",
+  "author": "Maksym Kozlenko",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Papaya_cut_half.jpg"
+ },
+ "pineapple": {
+  "article": "Pineapple",
+  "file": "കൈതച്ചക്ക.jpg",
+  "author": "Suniltg at Malayalam Wikipedia",
+  "license": "CC BY 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:%E0%B4%95%E0%B5%88%E0%B4%A4%E0%B4%9A%E0%B5%8D%E0%B4%9A%E0%B4%95%E0%B5%8D%E0%B4%95.jpg"
+ },
+ "amla": {
+  "article": "Phyllanthus emblica",
+  "file": "Phyllanthus_officinalis.jpg",
+  "author": "L. Shyamal",
+  "license": "CC BY 2.5",
+  "page": "https://commons.wikimedia.org/wiki/File:Phyllanthus_officinalis.jpg"
+ },
+ "sapota": {
+  "article": "Sapodilla",
+  "file": "സപ്പോട്ട.jpg",
+  "author": "Sugeesh at Malayalam Wikipedia",
+  "license": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:%E0%B4%B8%E0%B4%AA%E0%B5%8D%E0%B4%AA%E0%B5%8B%E0%B4%9F%E0%B5%8D%E0%B4%9F.jpg"
+ },
+ "figs": {
+  "query": "dried figs",
+  "file": "Dried figs (2).jpg",
+  "author": "Fumikas Sagisavas",
+  "license": "CC0",
+  "page": "https://commons.wikimedia.org/wiki/File:Dried_figs_(2).jpg"
+ },
+ "dates": {
+  "article": "Date palm",
+  "file": "Dates005.jpg",
+  "author": "Nepenthes",
+  "license": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Dates005.jpg"
+ },
+ "apple": {
+  "query": "dried apple slices",
+  "file": "Dried apple slices.jpg",
+  "author": "Fumikas Sagisavas",
+  "license": "CC0",
+  "page": "https://commons.wikimedia.org/wiki/File:Dried_apple_slices.jpg"
+ },
+ "citrus-peel": {
+  "query": "orange peel",
+  "file": "Oranges - whole-halved-segment.jpg",
+  "author": "Ivar Leidus",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Oranges_-_whole-halved-segment.jpg"
+ },
+ "drumstick-pods": {
+  "query": "drumstick moringa pods vegetable",
+  "file": "Moringa oleifera drumstick pods.JPG",
+  "author": "Erector",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Moringa_oleifera_drumstick_pods.JPG"
+ },
+ "tomato": {
+  "article": "Sun-dried tomato",
+  "file": "Sun-dried_tomatoes.jpg",
+  "author": "Andrew Deacon",
+  "license": "CC BY 2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Sun-dried_tomatoes.jpg"
+ },
+ "onion": {
+  "query": "red onions",
+  "file": "Red Onion on White.JPG",
+  "author": "Colin",
+  "license": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Red_Onion_on_White.JPG"
+ },
+ "potato": {
+  "query": "potato tubers",
+  "file": "Potato tubers in pail.jpg",
+  "author": "Ruslan V. Albitsky aka pauk",
+  "license": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Potato_tubers_in_pail.jpg"
+ },
+ "carrot": {
+  "query": "carrots",
+  "file": "Preparing and slicing carrots.jpg",
+  "author": "W.carter",
+  "license": "CC0",
+  "page": "https://commons.wikimedia.org/wiki/File:Preparing_and_slicing_carrots.jpg"
+ },
+ "bitter-gourd": {
+  "query": "bitter gourd vegetable",
+  "file": "Bitter gourd at Hyderabad market.jpg",
+  "author": "Bhaskaranaidu",
+  "license": "Public domain",
+  "page": "https://commons.wikimedia.org/wiki/File:Bitter_gourd_at_Hyderabad_market.jpg"
+ },
+ "okra": {
+  "article": "Okra",
+  "file": "Hong_Kong_Okra_Aug_25_2012.JPG",
+  "author": "Earth100",
+  "license": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Hong_Kong_Okra_Aug_25_2012.JPG"
+ },
+ "cluster-beans": {
+  "article": "Guar",
+  "file": "Cluster_bean-guar-Cyamopsis_psoralioides-Cyamopsis_tetragonolobus-TAMIL_NADU73.jpg",
+  "author": "த*உழவன்",
+  "license": "Public domain",
+  "page": "https://commons.wikimedia.org/wiki/File:Cluster_bean-guar-Cyamopsis_psoralioides-Cyamopsis_tetragonolobus-TAMIL_NADU73.jpg"
+ },
+ "mushroom": {
+  "article": "Agaricus bisporus",
+  "file": "ChampignonMushroom.jpg",
+  "author": "chris_73",
+  "license": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:ChampignonMushroom.jpg"
+ },
+ "tapioca": {
+  "query": "cassava roots",
+  "file": "Harvested cassava roots 06.jpg",
+  "author": "Denis kasozi",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Harvested_cassava_roots_06.jpg"
+ },
+ "green-peas": {
+  "article": "Pea",
+  "file": "Doperwt_rijserwt_peulen_Pisum_sativum.jpg",
+  "author": "Rasbak",
+  "license": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Doperwt_rijserwt_peulen_Pisum_sativum.jpg"
+ },
+ "paddy": {
+  "query": "paddy rice seeds",
+  "file": "Chak-hao paddy (traditional Meitei aromatic purple rice AKA black rice) & Meitei Cheng (traditionally or locally grown & harvested Meitei indigenous paddy or white rice) stored in Thumok containers (traditional Meitei baskets).jpg",
+  "author": "User:Goumisao",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Chak-hao_paddy_(traditional_Meitei_aromatic_purple_rice_AKA_black_rice)_%26_Meitei_Cheng_(traditionally_or_locally_grown_%26_harvested_Meitei_indigenous_paddy_or_white_rice)_stored_in_Thumok_containers_(traditional_Meitei_baskets).jpg"
+ },
+ "maize": {
+  "query": "yellow corn kernels",
+  "file": "DFC 0319 A heaping pile of fresh yellow corn kernels on a woven bamboo tray ready to be cooked or served.jpg",
+  "author": "PattayaPatrol",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:DFC_0319_A_heaping_pile_of_fresh_yellow_corn_kernels_on_a_woven_bamboo_tray_ready_to_be_cooked_or_served.jpg"
+ },
+ "millets": {
+  "article": "Finger millet",
+  "file": "Finger_millet_3_11-21-02.jpg",
+  "author": "mage taken by J. Wilson, USDA-ARS while in Ethiopia in 2002.",
+  "license": "Public domain",
+  "page": "https://commons.wikimedia.org/wiki/File:Finger_millet_3_11-21-02.jpg"
+ },
+ "pulses": {
+  "article": "Pulse (legume)",
+  "file": "Various_legumes.jpg",
+  "author": "Keith Weller, Agricultural Research Service, USDA",
+  "license": "Public domain",
+  "page": "https://commons.wikimedia.org/wiki/File:Various_legumes.jpg"
+ },
+ "sesame": {
+  "query": "sesame seeds",
+  "file": "Sa white sesame seeds.jpg",
+  "author": "Sanjay ach",
+  "license": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Sa_white_sesame_seeds.jpg"
+ },
+ "copra": {
+  "query": "dried coconut kernel",
+  "file": "Dried coconut kernel Seychelles.jpg",
+  "author": "Islands Development Company",
+  "license": "CC BY 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Dried_coconut_kernel_Seychelles.jpg"
+ },
+ "groundnut": {
+  "query": "peanuts in shell",
+  "file": "Peanuts (Arachis hypogaea) - in shell, shell cracked open, shelled, peeled.jpg",
+  "author": "Ivar Leidus",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Peanuts_(Arachis_hypogaea)_-_in_shell,_shell_cracked_open,_shelled,_peeled.jpg"
+ },
+ "cashew": {
+  "query": "raw cashew nuts",
+  "file": "Raw cashew nuts product of Buton.JPG",
+  "author": "Sakurai Midori",
+  "license": "CC BY 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Raw_cashew_nuts_product_of_Buton.JPG"
+ },
+ "areca": {
+  "query": "areca nuts",
+  "file": "Areca Nuts Palm Balamuri Coorg Feb24 A7C 09503.jpg",
+  "author": "This Photo was taken by Timothy A. Gonsalves. Feel free to use my photos, but please mention me as the author. I would much appreciate if you send me an email tagooty@yahoo.com or write on my talk page, for my information. Please contact me before commercial use. Please do not upload an edited image here without consulting me. I would like to make corrections only at my own source to ensure that the changes improve the image and are preserved.Otherwise you may upload an edited image with a new name. Please use one of the templates derivative or extract.",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Areca_Nuts_Palm_Balamuri_Coorg_Feb24_A7C_09503.jpg"
+ },
+ "coffee": {
+  "query": "coffee cherries drying",
+  "file": "WAE - Coffee cherries drying in Wae Rebo, Flores, Indonesia, 2019.jpg",
+  "author": "Josep M. Gracia",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:WAE_-_Coffee_cherries_drying_in_Wae_Rebo,_Flores,_Indonesia,_2019.jpg"
+ },
+ "cocoa": {
+  "article": "Cocoa bean",
+  "file": "Cocoa_Pods.JPG",
+  "author": "Photo by Medicaster.",
+  "license": "Public domain",
+  "page": "https://commons.wikimedia.org/wiki/File:Cocoa_Pods.JPG"
+ },
+ "salted-fish": {
+  "query": "dried fish market India",
+  "file": "Dried fish for sale in Poompuhar JEG6150.jpg",
+  "author": "PJeganathan",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Dried_fish_for_sale_in_Poompuhar_JEG6150.jpg"
+ },
+ "anchovy": {
+  "query": "dried anchovies",
+  "file": "Anchovy Nethili Dried Fish.jpg",
+  "author": "Thamizhpparithi Maari",
+  "license": "CC BY-SA 4.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Anchovy_Nethili_Dried_Fish.jpg"
+ },
+ "prawns": {
+  "article": "Dried shrimp",
+  "file": "Dried_river_shrimp.JPG",
+  "author": "Humanfeather / Michelle Jo",
+  "license": "CC BY 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Dried_river_shrimp.JPG"
+ },
+ "fodder": {
+  "query": "hay bales",
+  "file": "Field of hay bales - omeo.jpg",
+  "author": "Fir0002",
+  "license": "GFDL 1.2",
+  "page": "https://commons.wikimedia.org/wiki/File:Field_of_hay_bales_-_omeo.jpg"
+ },
+ "azolla": {
+  "article": "Azolla",
+  "file": "Azolla_caroliniana0.jpg",
+  "author": "Kurt Stüber [1]",
+  "license": "CC BY-SA 3.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Azolla_caroliniana0.jpg"
+ },
+ "cow-dung": {
+  "query": "cow dung cakes drying",
+  "file": "Cow dung cakes Bangladesh 2010.jpg",
+  "author": "Melanie Ko",
+  "license": "CC BY 2.0",
+  "page": "https://commons.wikimedia.org/wiki/File:Cow_dung_cakes_Bangladesh_2010.jpg"
+ }
+}

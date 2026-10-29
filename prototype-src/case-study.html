@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Solar Dry House Case Study</title>
+<style>
+:root{--bg:#F6F7F3;--card:#FFFFFF;--ink:#1C2620;--muted:#5F6A63;--line:#E2E6DF;--accent:#2F7A5B;--soft:#E6F2EB;--warn:#94600F;--warnSoft:#FDF1DE;--danger:#C9503C;--dangerSoft:#FBE9E5;--frame:#14181A}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#111613;--card:#1A211D;--ink:#E8EEEA;--muted:#A2ADA6;--line:#2A332E;--accent:#6FC39C;--soft:#1E3328;--warn:#F2B25C;--warnSoft:#3A2C17;--danger:#EE836F;--dangerSoft:#3B211C;--frame:#000}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#111613;--card:#1A211D;--ink:#E8EEEA;--muted:#A2ADA6;--line:#2A332E;--accent:#6FC39C;--soft:#1E3328;--warn:#F2B25C;--warnSoft:#3A2C17;--danger:#EE836F;--dangerSoft:#3B211C;--frame:#000}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,system-ui,sans-serif;padding:40px 16px 64px}
+.wrap{max-width:1040px;margin:0 auto}
+.kicker{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+h1{font-size:clamp(30px,5vw,46px);line-height:1.08;letter-spacing:-.03em;margin:0 0 14px;text-wrap:balance}
+h2{font-size:clamp(22px,3vw,28px);letter-spacing:-.02em;line-height:1.2;margin:0 0 12px;text-wrap:balance}
+h3{font-size:17px;letter-spacing:-.01em;margin:0 0 6px}
+p{margin:0 0 14px;max-width:66ch}
+.lede{font-size:18px;color:var(--muted);max-width:60ch}
+.muted{color:var(--muted)}
+a{color:var(--accent);font-weight:600}
+section{margin-top:64px}
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;border-top:1px solid var(--line);padding-top:18px;margin-top:28px;list-style:none;padding-left:0}
+.facts li{font-size:14px;line-height:1.45}
+.facts b{display:block;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:4px}
+@media (max-width:760px){.facts{grid-template-columns:1fr 1fr}}
+.hero-shots{display:grid;grid-template-columns:2.2fr 1fr;gap:20px;align-items:end;margin-top:36px}
+.desk{border-radius:14px;overflow:hidden;border:1px solid var(--line);box-shadow:0 24px 48px -28px rgba(28,38,32,.45);background:var(--card)}
+.desk img{display:block;width:100%;height:auto}
+.phone{background:var(--frame);border-radius:34px;padding:7px;box-shadow:0 22px 40px -22px rgba(28,38,32,.5)}
+.phone img{display:block;width:100%;height:auto;border-radius:28px}
+@media (max-width:760px){.hero-shots{grid-template-columns:1fr}.hero-shots .phone{max-width:280px;margin:0 auto}}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,300px);gap:40px;align-items:start}
+.split.rev{grid-template-columns:minmax(0,300px) minmax(0,1fr)}
+.split.rev .phone{order:-1}
+@media (max-width:820px){.split,.split.rev{grid-template-columns:1fr}.split .phone,.split.rev .phone{max-width:300px;margin:0 auto;order:0}}
+.pains{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:20px}
+@media (max-width:820px){.pains{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.card p{font-size:14.5px;margin:0;color:var(--muted)}
+.decision{border-left:3px solid var(--accent);padding:2px 0 2px 18px;margin:0 0 26px}
+.decision p{margin:0}
+.tag{display:inline-block;font-size:12px;font-weight:600;border-radius:999px;padding:3px 10px;margin:0 6px 6px 0;background:var(--soft);color:var(--accent)}
+.tag.warn{background:var(--warnSoft);color:var(--warn)}
+.tag.danger{background:var(--dangerSoft);color:var(--danger)}
+.two-shots{display:grid;grid-template-columns:1.9fr 1fr;gap:20px;align-items:end;margin-top:20px}
+@media (max-width:760px){.two-shots{grid-template-columns:1fr}.two-shots .phone{max-width:280px;margin:0 auto}}
+.try{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+@media (max-width:640px){.try{grid-template-columns:1fr}}
+.try a{display:grid;gap:4px;text-decoration:none;color:var(--ink);font-weight:400}
+.try a b{color:var(--accent);font-size:17px}
+.try a:hover{border-color:var(--accent)}
+.arch{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:10px;align-items:stretch;margin-top:18px}
+.arch .card{display:flex;flex-direction:column;gap:6px}
+.arch .card b{font-size:15px}
+.arch .card small{color:var(--muted);font-size:13px;line-height:1.45}
+.arrow{align-self:center;color:var(--muted);font-size:20px}
+@media (max-width:820px){.arch{grid-template-columns:1fr}.arrow{transform:rotate(90deg);justify-self:center}}
+ul.plain{padding-left:20px;margin:0 0 14px}
+ul.plain li{margin-bottom:6px;max-width:64ch}
+.status{background:var(--warnSoft);border-radius:14px;padding:18px 20px}
+.status h3{color:var(--warn)}
+footer{margin-top:64px;border-top:1px solid var(--line);padding-top:18px;font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">Case study · Side project</div>
+  <h1>Solar Dry House: when will it be dry?</h1>
+  <p class="lede">A web and mobile app for people who run a solar dryer. It reads the live weather where the dryer stands and turns it into the one answer they need: how many days until the chilli, turmeric or copra on the trays is dry, and on which date.</p>
+  <ul class="facts">
+    <li><b>Role</b>Product design and front-end build</li>
+    <li><b>Platforms</b>Web app and installable phone app, one codebase</li>
+    <li><b>Stack</b>HTML, CSS, JavaScript, Open-Meteo, Wikimedia Commons</li>
+    <li><b>Built with</b>AI-assisted coding (Claude Code)</li>
+  </ul>
+  <div class="hero-shots">
+    <div class="desk"><img src="shots/w-home.jpg" alt="The web app's Today screen for Coimbatore: 30 degrees outside, an estimated 56 degrees and 11 percent humidity inside the dry house, and a 15-day row rating each day for drying" width="1440" height="900" loading="lazy"></div>
+    <div class="phone"><img src="shots/m-home.jpg" alt="The same Today screen on a phone, opened at the phone's own location" width="600" height="1306" loading="lazy"></div>
+  </div>
+</header>
+
+<section>
+  <div class="kicker">The problem</div>
+  <h2>The dryer is faster than the open sun, but the timing is still a guess</h2>
+  <p>A solar dry house is a polycarbonate greenhouse with a black floor and a fan. It runs 15–25 °C hotter than the air outside, so chilli that takes two weeks on a tarpaulin dries in five days, clean and out of the rain. What it doesn't do is tell anyone when to load, when to open the vents, or when a batch is finished.</p>
+  <div class="pains">
+    <div class="card"><h3>“How many days?”</h3><p>It depends on the crop, the slice, and this week's sun and humidity. A cloudy spell can add days that nobody planned for.</p></div>
+    <div class="card"><h3>“Is it too hot in there?”</h3><p>At noon the house passes 60 °C. That's fine for copra, but chilli turns brown and moringa loses its colour and value.</p></div>
+    <div class="card"><h3>“How dry is dry?”</h3><p>A low target like 3% moisture sounds simple. Leaves can get there; mango and salted fish never will in a solar dryer, however long they stay.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="kicker">Design goals</div>
+  <h2>What the app had to get right</h2>
+  <ul class="plain">
+    <li><b>Answer with a date</b>, not a moisture model.</li>
+    <li><b>Use the weather where the dryer is</b>, without asking anyone to read a forecast.</li>
+    <li><b>Be honest when the target is impossible</b> rather than print a number that will never come true.</li>
+    <li><b>Let people find their crop</b> by the name they use and the way it looks.</li>
+    <li><b>Feel calm and easy</b> on a budget phone in bright sun, as well as on a laptop.</li>
+  </ul>
+</section>
+
+<section>
+  <div class="kicker">Key decisions</div>
+  <h2>How the design answered those goals</h2>
+
+  <div class="split" style="margin-top:24px">
+    <div>
+      <div class="decision">
+        <h3>Turn the forecast into drying days</h3>
+        <p>The app takes Open-Meteo's sunshine, temperature and humidity for the next 15 days and estimates the air inside the house: the sun sets how far it climbs above the outside temperature, and heating dries the air. Each day gets a rating <span class="tag">Good</span><span class="tag warn">Fair</span><span class="tag danger">Slow</span>, and a cloudy day counts as only part of a drying day. That's how “5 sunny days” becomes <b>ready Wed 4 Nov</b>.</p>
+      </div>
+      <div class="decision">
+        <h3>Lead with the sky, and say what to do about it</h3>
+        <p>The Today card takes the colour of the weather (warm on a sunny day, grey when it's overcast, deep blue at night) and ends in a plain instruction: keep the fans running, open the vents, or keep the door shut until sunrise. The forecast row below shows the estimated temperature inside the house rather than outside, because that's the number that decides the batch.</p>
+      </div>
+      <div class="decision">
+        <h3>Warn before the heat spoils a crop</h3>
+        <p>Every material carries its safe air temperature. When the forecast puts the house above it, the material's page names the days and the fix: open the vents and lay shade net from 11 am to 2 pm.</p>
+      </div>
+    </div>
+    <div class="phone"><img src="shots/m-detail.jpg" alt="Red chilli page with a photo, 4–6 days to safe storage, 9 days to 3 percent, a 45–55 degree band and a note that this week's weather suits it" width="600" height="1306" loading="lazy"></div>
+  </div>
+
+  <div class="split rev" style="margin-top:36px">
+    <div class="phone"><img src="shots/m-curve.jpg" alt="Turmeric drying curve falling from 78 percent towards a lowest line, with markers where it reaches safe storage and the 3 percent target, beside the forecast ready dates" width="600" height="1306" loading="lazy"></div>
+    <div>
+      <div class="decision">
+        <h3>Say when 3% can't be reached</h3>
+        <p>The brief asked how long each material takes to reach 3% moisture. Every material levels off at a moisture set by the hot, dry air around it. That's about 2–3% for leaves, vegetables and spices, but 8–12% for sugary fruit, salted fish and tamarind. The app fits a drying curve between the fresh moisture and the safe-storage point and stops at that floor. So 24 of the 58 materials show a day count to 3%, and the rest say <b>Can't reach 3%</b> and give the lowest they can get to.</p>
+      </div>
+      <div class="decision">
+        <h3>Show the cost of going lower</h3>
+        <p>Dropping turmeric from safe storage at 10% to 3% takes about six more sunny days. The page says so, and that it's worth it for powders and long storage but costs weight, colour and aroma.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="split" style="margin-top:36px">
+    <div>
+      <div class="decision">
+        <h3>Real photos and local names</h3>
+        <p>Fifty-eight materials, from curry leaves to cow dung cakes, each with a real photograph from Wikimedia Commons, credited on its page. Search works in English and in the names people actually use: <b>manjal</b> finds turmeric, <b>karuvadu</b> finds dried fish. Category chips and a 3 / 5 / 8 / 10% switch change every card's day count at once.</p>
+      </div>
+      <div class="decision">
+        <h3>Plan a whole batch</h3>
+        <p>The batch screen takes the fresh weight and tray area. It shows how much water has to leave, how many kilos come back, whether the load fits on the trays, and the ready date with this week's weather.</p>
+      </div>
+    </div>
+    <div class="phone"><img src="shots/m-materials.jpg" alt="Materials screen: search box, category chips, a 3/5/8/10 percent moisture switch, and photo cards for amla and anchovy marked Can't reach 3%" width="600" height="1306" loading="lazy"></div>
+  </div>
+</section>
+
+<section>
+  <div class="kicker">Location</div>
+  <h2>The web app asks, the phone already knows</h2>
+  <p>Everything depends on where the dryer is, so the first thing the app needs is a place. The two versions get it differently, because people use them differently.</p>
+  <div class="two-shots">
+    <div class="desk"><img src="shots/w-welcome.jpg" alt="Web app welcome: Where is your dry house? with a town search box and a Use my current location button" width="1440" height="900" loading="lazy"></div>
+    <div class="phone"><img src="shots/m-batch.jpg" alt="Batch screen on a phone for copra: water to remove, dried weight, tray area needed and drying time" width="600" height="1306" loading="lazy"></div>
+  </div>
+  <ul class="plain" style="margin-top:20px">
+    <li><b>Web:</b> a laptop is usually not at the dryer, so the web app asks “Where is your dry house?” and searches towns as you type. Location access is offered as a button, never sprung on page load.</li>
+    <li><b>Mobile:</b> the phone is usually standing next to the dryer. The app reads the device location as soon as it opens, names the town, and refreshes it on each launch if the phone has moved more than 3 km. If permission is refused, it falls back to the town search and says why.</li>
+  </ul>
+</section>
+
+<section>
+  <div class="kicker">Two prototypes</div>
+  <h2>Try both</h2>
+  <div class="try">
+    <a class="card" href="mobile.html" target="_top"><b>Mobile app →</b><span class="muted">In a phone frame. Allow location and it opens on your own town's weather.</span></a>
+    <a class="card" href="web/" target="_top"><b>Web app →</b><span class="muted">The desktop layout. Type your town to start.</span></a>
+  </div>
+</section>
+
+<section>
+  <div class="kicker">How it is built</div>
+  <h2>A small app with no server</h2>
+  <div class="arch">
+    <div class="card"><b>Weather and place</b><small>Open-Meteo forecast and town search, with a reverse lookup to turn phone coordinates into a town name. All free and called from the browser.</small></div>
+    <div class="arrow">→</div>
+    <div class="card"><b>Drying model</b><small>58 materials with fresh, safe and lowest moisture, a temperature band and typical sunny-day times. An exponential drying curve gives days to any target.</small></div>
+    <div class="arrow">→</div>
+    <div class="card"><b>Installable app</b><small>A progressive web app. It installs to the home screen and keeps working offline with the last forecast it saved.</small></div>
+  </div>
+</section>
+
+<section>
+  <div class="status">
+    <h3>Where it stands</h3>
+    <p style="margin-bottom:8px">Both prototypes on this page are the working app, with live weather. The screenshots were captured from it, with the mobile version reading a simulated phone location in Coimbatore.</p>
+    <p style="margin:0">The drying figures are typical guide values for greenhouse-type dryers, and the inside temperature is an estimate from the forecast, not a sensor reading. Neither has been checked against a real dryer yet. Next would be logging a few real batches to tune the model, and app-store builds if a native wrapper is needed.</p>
+  </div>
+</section>
+
+<section>
+  <div class="kicker">What I took from it</div>
+  <h2>The honest answer is part of the design</h2>
+  <p>The request was a number: days to 3%. The useful product turned out to be a date, plus a clear “not possible” where the physics says no. The data is the easy part. The design work was deciding what to say when the weather, the crop or the target makes the answer uncomfortable.</p>
+</section>
+
+<footer>Solar Dry House · designed and built by Gopinath Thandapani with AI-assisted coding. Weather by Open-Meteo. Material photos from Wikimedia Commons under their own licences, credited on each material's page.</footer>
+</div>
+</body>
+</html>

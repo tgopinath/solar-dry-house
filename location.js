@@ -12,6 +12,12 @@ export function appMode() {
 }
 
 export function savedPlace() {
+  // A link can carry a place: ?place=Coimbatore|11.0055|76.9661 (used for shared links and screenshots).
+  const q = new URLSearchParams(location.search).get("place");
+  if (q) {
+    const [name, lat, lon] = q.split("|");
+    if (name && +lat && +lon) { const p = { name, region: "", lat: +lat, lon: +lon, source: "link" }; savePlace(p); return p; }
+  }
   try { return JSON.parse(localStorage.getItem(KEY)); } catch { return null; }
 }
 export function savePlace(p) {

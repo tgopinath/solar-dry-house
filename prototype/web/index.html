@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en" data-mode="web">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Solar Dry House Web</title>
+<meta name="description" content="Drying times, live weather and a materials guide for a solar dry house.">
+<meta name="theme-color" content="#F6F7F3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111613" media="(prefers-color-scheme: dark)">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Dry House">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="#home" aria-label="Solar Dry House home">
+    <img src="icons/icon.svg" alt="" width="32" height="32">
+    <span>Solar Dry House</span>
+  </a>
+  <nav class="tabs" aria-label="Main">
+    <a href="#home" data-tab="home"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg><span>Today</span></a>
+    <a href="#materials" data-tab="materials"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20c0-8 5-14 14-15-1 9-7 14-14 15z"/><path d="M5 20l7-7"/></svg><span>Materials</span></a>
+    <a href="#calc" data-tab="calc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1.2 11.2a2 2 0 0 1-2 1.8H9.2a2 2 0 0 1-2-1.8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span>Batch</span></a>
+    <a href="#guide" data-tab="guide"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h18"/><path d="M5 20V11q7-8 14 0v9"/><path d="M9 15h6"/></svg><span>Guide</span></a>
+  </nav>
+  <button class="place-chip" id="placeBtn" type="button" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span id="placeName"></span></button>
+</header>
+
+<main id="view" tabindex="-1"></main>
+
+
+<dialog class="sheet" id="placeSheet" aria-labelledby="placeTitle">
+  <form method="dialog" class="sheet-in" id="placeForm">
+    <div class="sheet-head"><h2 id="placeTitle">Where is your dry house?</h2><button class="icon-btn" value="cancel" aria-label="Close">×</button></div>
+    <p class="muted">The forecast and drying dates are worked out for this place.</p>
+    <input class="input" id="placeInput" type="search" placeholder="Type your town or village" autocomplete="off" aria-label="Town or village">
+    <ul class="places" id="placeList"></ul>
+    <button class="btn ghost" id="placeGps" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/><circle cx="12" cy="12" r="7"/></svg>Use my current location</button>
+  </form>
+</dialog>
+
+<template id="guide-tpl">
+  <section class="page">
+    <div class="page-head">
+      <span class="eyebrow">Guide</span>
+      <h1>How the dry house works</h1>
+      <p class="lede">A solar dry house is a closed greenhouse built for drying, not growing. Sunlight passes through the clear roof and heats a black floor, which warms the air. Fans pull that warm air across the trays and push the moisture out. Produce dries faster and stays clean, safe from rain, dust, birds and insects.</p>
+    </div>
+    <div class="diagram" role="img" aria-label="Cross-section: sunlight passes through the polycarbonate roof and heats the black floor; outside air enters low vents, warms, rises through the trays and leaves through the exhaust fan at the top.">
+      <svg viewBox="0 0 460 250" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="ar" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--sky)"/></marker>
+          <marker id="arh" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--heat)"/></marker>
+        </defs>
+        <circle cx="58" cy="38" r="18" fill="var(--sun)"/>
+        <g stroke="var(--sun)" stroke-width="2" stroke-linecap="round"><line x1="84" y1="56" x2="138" y2="98"/><line x1="70" y1="66" x2="112" y2="118"/><line x1="92" y1="44" x2="162" y2="84"/></g>
+        <path d="M90 210 V120 Q230 30 370 120 V210 Z" fill="var(--sheet)" stroke="var(--sky)" stroke-width="2.5"/>
+        <rect x="90" y="206" width="280" height="8" fill="var(--ink)"/>
+        <text x="230" y="232" text-anchor="middle" class="svg-label">black absorber floor</text>
+        <g fill="var(--sun-soft)" stroke="var(--sun)" stroke-width="1.5"><rect x="150" y="176" width="160" height="6" rx="2"/><rect x="150" y="150" width="160" height="6" rx="2"/><rect x="150" y="124" width="160" height="6" rx="2"/></g>
+        <g stroke="var(--muted)" stroke-width="1.5"><line x1="152" y1="124" x2="152" y2="206"/><line x1="308" y1="124" x2="308" y2="206"/></g>
+        <text x="230" y="117" text-anchor="middle" class="svg-label" fill="var(--ink)">mesh trays</text>
+        <rect x="86" y="186" width="8" height="18" fill="var(--ground)" stroke="var(--sky)"/>
+        <path class="flow" d="M30 196 H120 Q140 196 150 186" fill="none" stroke="var(--sky)" stroke-width="2" marker-end="url(#ar)"/>
+        <text x="14" y="184" class="svg-label" fill="var(--sky)">cool air in</text>
+        <path class="flow" d="M200 196 Q190 150 215 105" fill="none" stroke="var(--heat)" stroke-width="2" marker-end="url(#arh)"/>
+        <path class="flow" d="M265 196 Q275 150 255 100" fill="none" stroke="var(--heat)" stroke-width="2" marker-end="url(#arh)"/>
+        <circle cx="338" cy="104" r="11" fill="var(--surface)" stroke="var(--ink)" stroke-width="1.5"/>
+        <path d="M338 94 Q343 104 338 104 Q333 104 338 114 M328 104 Q338 99 338 104 Q338 109 348 104" fill="none" stroke="var(--ink)" stroke-width="1.5"/>
+        <path class="flow" d="M290 92 Q320 80 352 96 L420 80" fill="none" stroke="var(--heat)" stroke-width="2" marker-end="url(#arh)"/>
+        <text x="372" y="68" class="svg-label" fill="var(--heat)">moist air out</text>
+        <text x="350" y="134" class="svg-label">solar fan</text>
+        <text x="190" y="70" class="svg-label" fill="var(--sky)">UV polycarbonate</text>
+      </svg>
+    </div>
+
+    <div class="grid-cards">
+      <div class="card"><span class="tag">Roof &amp; walls</span><h3>UV-stabilised polycarbonate</h3><p>Usually 4–6 mm multiwall sheet on a GI pipe frame. Lets sunlight in and traps the heat. Lasts 8–10 years before it yellows.</p></div>
+      <div class="card"><span class="tag">Floor</span><h3>Black absorber</h3><p>Black-painted concrete or black sheet. It turns sunlight into heat and keeps giving it off after clouds pass.</p></div>
+      <div class="card"><span class="tag">Airflow</span><h3>Low inlets, high exhaust</h3><p>Fresh air enters through meshed vents near the floor. DC fans at the top, run by a small solar panel, pull the moist air out.</p></div>
+      <div class="card"><span class="tag">Racks</span><h3>Mesh trays on tiers</h3><p>Food-grade stainless steel or HDPE mesh, so air reaches both sides. Two to four tiers multiply the drying area.</p></div>
+      <div class="card"><span class="tag">Door</span><h3>Insect-proof entry</h3><p>A tight door with a mesh screen. Keep it shut while drying — an open door dumps the heat in minutes.</p></div>
+      <div class="card"><span class="tag">Gauges</span><h3>Thermometer &amp; hygrometer</h3><p>A digital temperature and humidity meter at tray height tells you when to open vents or cover delicate crops.</p></div>
+    </div>
+
+    <h2>A drying day</h2>
+    <ol class="steps">
+      <li><time>6:30 am</time><div><h3>Air out the night moisture</h3><p>Open the vents and run the fans for 20–30 minutes. Wipe off condensation dripping from the roof.</p></div></li>
+      <li><time>7:00 am</time><div><h3>Prepare the produce</h3><p>Wash, sort and cut evenly — 5–8 mm slices dry evenly. Blanch, boil or salt where the material page says so. Drain surface water well.</p></div></li>
+      <li><time>8:00 am</time><div><h3>Load the trays</h3><p>One even layer. Freshest, wettest batch on the lowest tier where air enters. Never load fresh produce on top of half-dried produce.</p></div></li>
+      <li><time>11 am – 3 pm</time><div><h3>Watch the heat</h3><p>If the thermometer at tray height passes the material's limit, open vents or lay shade net on the roof. Close the door every time you enter.</p></div></li>
+      <li><time>1:00 pm</time><div><h3>Turn and rotate</h3><p>Turn pieces over once. Swap top and bottom trays so the whole load dries at the same pace.</p></div></li>
+      <li><time>5:00 pm</time><div><h3>Close up for the night</h3><p>Shut vents and door to hold the heat and keep humid night air out. Leave produce on the trays.</p></div></li>
+      <li><time>Last day</time><div><h3>Test, cool, pack</h3><p>Do the "done" test, cool to room temperature, then pack in airtight, moisture-proof bags with the date.</p></div></li>
+    </ol>
+
+    <h2>Care</h2>
+    <div class="grid-cards four">
+      <div class="card"><h3>Every day</h3><ul><li>Sweep the floor, wipe trays</li><li>Empty the condensate channel</li><li>Check the fans spin</li></ul></div>
+      <div class="card"><h3>Every week</h3><ul><li>Wash trays, dry in the sun</li><li>Dust the solar panel</li><li>Check vent mesh for tears</li></ul></div>
+      <div class="card"><h3>Every month</h3><ul><li>Wash the roof with plain water and a soft cloth</li><li>Tighten sheet screws, seal gaps</li><li>Check the door seal</li></ul></div>
+      <div class="card"><h3>Every year</h3><ul><li>Repaint the floor black</li><li>Treat frame rust</li><li>Replace yellowed sheets or worn fans</li></ul></div>
+    </div>
+
+    <h2>When something goes wrong</h2>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>You see</th><th>Likely cause</th><th>Fix</th></tr></thead>
+        <tbody>
+          <tr><td>Inside air above 65 °C</td><td>Clear summer noon, vents closed</td><td>Open all vents, run fans full, lay 50% shade net on the roof from 11 am to 2 pm.</td></tr>
+          <tr><td>Hard skin, wet inside</td><td>Too hot on day one (case hardening)</td><td>Start cooler, slice thinner, raise heat from day two.</td></tr>
+          <tr><td>Mould or sour smell</td><td>Overloaded, loaded wet, or humid nights</td><td>Thinner layers, drain well, close up at 5 pm, run fans at dawn.</td></tr>
+          <tr><td>Roof drips in the morning</td><td>Night condensation</td><td>Air out at sunrise before touching trays.</td></tr>
+          <tr><td>Leaves losing colour</td><td>Too hot, or direct sun on the crop</td><td>Keep under 45 °C; cover the tray with thin cotton cloth.</td></tr>
+          <tr><td>Uneven drying</td><td>Air not reaching every tier</td><td>Rotate trays daily, keep inlets clear, leave a gap at the walls.</td></tr>
+          <tr><td>Insects inside</td><td>Torn mesh or open door</td><td>Patch mesh, fit a door closer, clear leftovers between batches.</td></tr>
+          <tr><td>Very slow drying</td><td>Cloudy days or fans off</td><td>Expected on cloudy days. Check panel and fan wiring. Never add wet produce on top.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Questions</h2>
+    <div class="faq">
+      <details><summary>Why can't some materials reach 3% moisture?</summary><p>Every material settles at a lowest moisture set by the air around it — its equilibrium moisture. Inside a sunny dry house that is about 2–3% for leaves, vegetables and spices, but 8–12% for sugary fruit, salted fish and tamarind, because sugar and salt hold on to water. To go lower you need an electric dehydrator or a desiccant.</p></details>
+      <details><summary>Should I dry everything to 3%?</summary><p>No. Each material page shows its safe storage moisture — the level where mould and insects stop. Drying far below that costs extra days, weight (which is money when sold by weight), colour and aroma. Powders and long-storage leaves benefit from 3–5%.</p></details>
+      <details><summary>How are the forecast dates worked out?</summary><p>Typical drying days are for clear, sunny days. The app reads today's and the next 16 days' sunshine and humidity from Open-Meteo, counts a cloudy or humid day as only part of a drying day, and adds days up until the material is done. Loading after 11 am starts the count tomorrow.</p></details>
+      <details><summary>How do I check moisture without a meter?</summary><p>Weigh a sample tray. When it reaches the "dried weight" from the calculator, it's at your target. Otherwise use the "done when" test on each material page.</p></details>
+      <details><summary>Does it work on rainy days?</summary><p>Yes, more slowly — diffuse light still warms the house and the crop stays dry. Drying stops at night; keep the house closed.</p></details>
+    </div>
+    <p class="fine">All figures are typical guide values for greenhouse-type solar dryers in hot, sunny regions. Your house will vary with size, sheet, fans, season and slice thickness — note a few batches and adjust.</p>
+  </section>
+</template>
+
+<script>window.SDH_ASSETS = "../"; window.SDH_NO_SW = true;</script>
+<script type="module" src="app.js"></script>
+</body>
+</html>

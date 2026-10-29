@@ -3,6 +3,8 @@ import { fetchWeather, cachedWeather, searchPlaces, days, finishDate, rating, de
 import { appMode, savedPlace, savePlace, placeFromDevice, refreshDevicePlace, whyFailed } from "./location.js";
 
 const MODE = appMode();
+// The portfolio builds share one photo folder between the web and mobile copies.
+const ASSETS = window.SDH_ASSETS || "";
 document.documentElement.dataset.mode = MODE;
 const view = document.getElementById("view");
 const store = {
@@ -54,7 +56,7 @@ const I = {
   done: '<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
   bag: '<svg viewBox="0 0 24 24"><path d="M6 8h12l-1.2 11.2a2 2 0 0 1-2 1.8H9.2a2 2 0 0 1-2-1.8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>',
 };
-const img = (id, alt = "") => `<img src="images/${id}.jpg" alt="${esc(alt)}" loading="lazy" decoding="async">`;
+const img = (id, alt = "") => `<img src="${ASSETS}images/${id}.jpg" alt="${esc(alt)}" loading="lazy" decoding="async">`;
 
 /* ---------- place ---------- */
 const placeBtn = document.getElementById("placeBtn");
@@ -417,7 +419,7 @@ function renderCalc(id) {
       <div class="page-head"><span class="eyebrow">Plan a batch</span><h1>How much, how long</h1><p class="lede">Pick a material and the weight you'll load. See what you'll get back, whether it fits on your trays, and when it'll be ready.</p></div>
       <div class="calc">
         <form class="card form" id="cf" novalidate>
-          <div class="picked"><img id="c-img" src="images/${sel.id}.jpg" alt=""><div class="field" style="flex:1"><label for="c-m">Material</label>
+          <div class="picked"><img id="c-img" src="${ASSETS}images/${sel.id}.jpg" alt=""><div class="field" style="flex:1"><label for="c-m">Material</label>
             <select id="c-m">${CATEGORIES.map((c) => `<optgroup label="${esc(c)}">${MATERIALS.filter((m) => m.cat === c).map((m) => `<option value="${m.id}">${esc(m.name)}</option>`).join("")}</optgroup>`).join("")}</select></div></div>
           <div class="field"><label for="c-kg">Fresh weight (kg)</label><input id="c-kg" type="number" min="1" step="1" value="200" inputmode="decimal"></div>
           <div class="pair">
@@ -441,7 +443,7 @@ function renderCalc(id) {
     </section>`;
   const $ = (s) => document.getElementById(s);
   $("c-m").value = sel.id;
-  const setM = () => { const m = byId[$("c-m").value]; $("c-img").src = `images/${m.id}.jpg`; $("c-mi").value = m.mi; $("c-mf").value = state.target > m.me ? state.target : m.ms; calc(); };
+  const setM = () => { const m = byId[$("c-m").value]; $("c-img").src = `${ASSETS}images/${m.id}.jpg`; $("c-mi").value = m.mi; $("c-mf").value = state.target > m.me ? state.target : m.ms; calc(); };
   const say = (cls, icn, text) => { const n = $("r-note"); n.className = `note ${cls}`; n.innerHTML = `${icn}<span>${esc(text)}</span>`; };
   const calc = () => {
     const m = byId[$("c-m").value];
@@ -473,7 +475,7 @@ function renderCalc(id) {
 }
 
 /* ---------- boot ---------- */
-fetch("images/credits.json").then((r) => r.json()).then((c) => { state.credits = c; if (state.route?.path === "m") render(); }).catch(() => {});
+fetch(`${ASSETS}images/credits.json`).then((r) => r.json()).then((c) => { state.credits = c; if (state.route?.path === "m") render(); }).catch(() => {});
 window.addEventListener("hashchange", route);
 window.addEventListener("online", () => loadWeather(true));
 showPlace();
@@ -482,4 +484,4 @@ loadWeather();
 if (MODE === "mobile" && state.loc) {
   refreshDevicePlace(state.loc).then((p) => { if (p) setPlace(p); });
 }
-if ("serviceWorker" in navigator && location.protocol !== "file:") navigator.serviceWorker.register("sw.js").catch(() => {});
+if ("serviceWorker" in navigator && location.protocol !== "file:" && !window.SDH_NO_SW) navigator.serviceWorker.register("sw.js").catch(() => {});
