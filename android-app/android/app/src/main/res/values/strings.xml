@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Solar Dry House</string>
+    <string name="title_activity_main">Solar Dry House</string>
+    <string name="package_name">com.gopinath.solardryhouse</string>
+    <string name="custom_url_scheme">com.gopinath.solardryhouse</string>
+</resources>
