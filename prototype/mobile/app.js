@@ -145,12 +145,12 @@ function render() {
 
 /* ---------- welcome (no place yet) ---------- */
 const houseArt = `<svg class="welcome-art" viewBox="0 0 260 150" aria-hidden="true">
-  <circle cx="58" cy="40" r="20" fill="var(--amber)" opacity=".9"/>
+  <circle cx="58" cy="40" r="20" fill="var(--sun)"/>
   <path d="M40 128V84Q130 18 220 84V128Z" fill="var(--sheet)" stroke="var(--sky)" stroke-width="3" stroke-linejoin="round"/>
   <rect x="34" y="126" width="192" height="8" rx="4" fill="var(--ink)"/>
   <g fill="var(--amber-soft)" stroke="var(--amber)" stroke-width="2"><rect x="80" y="108" width="100" height="6" rx="3"/><rect x="80" y="92" width="100" height="6" rx="3"/></g>
   <g fill="var(--red)"><circle cx="96" cy="88" r="3.5"/><circle cx="108" cy="88" r="3.5"/><circle cx="120" cy="88" r="3.5"/></g>
-  <g fill="var(--green)"><ellipse cx="146" cy="104" rx="6" ry="3"/><ellipse cx="160" cy="104" rx="6" ry="3"/></g>
+  <g fill="var(--good)"><ellipse cx="146" cy="104" rx="6" ry="3"/><ellipse cx="160" cy="104" rx="6" ry="3"/></g>
 </svg>`;
 function renderWelcome() {
   document.title = "Solar Dry House";
@@ -210,7 +210,7 @@ function renderHome() {
     <section class="page">
       <div class="hello"><p class="greet">${greeting()}</p><h1>${headline}</h1></div>
 
-      <div class="hero ${skin}">
+      <div class="hero ${skin}"${skin === "night" ? ' data-theme="dark"' : ""}>
         <div class="hero-top">
           ${icon(c.is_day ? kind : "cloud", 64)}
           <div><div class="hero-temp">${fmt(c.temperature_2m)}°</div></div>
@@ -336,11 +336,11 @@ function curveSVG(m, target) {
     ${xt.map((d) => `<text x="${x(d)}" y="${H - pb + 18}" text-anchor="middle">${d}</text>`).join("")}
     <text x="${(pl + W - pr) / 2}" y="${H - 2}" text-anchor="middle">sunny drying days</text>
     <path d="${area}" fill="url(#cg)"/>
-    ${hline(m.ms, "var(--green)", `safe ${m.ms}%`, "above")}
+    ${hline(m.ms, "var(--good)", `safe ${m.ms}%`, "above")}
     ${hline(m.me, "var(--red)", `lowest ${m.me}%`, "below")}
-    ${target !== m.ms && target > m.me ? hline(target, "var(--amber)", `target ${target}%`, "left") : ""}
+    ${target !== m.ms && target > m.me ? hline(target, "var(--accent-text)", `target ${target}%`, "left") : ""}
     <path d="${path}" fill="none" stroke="var(--sky)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-    ${dot(tSafe, m.ms, "var(--green)")}${dot(tT, target, "var(--amber)")}
+    ${dot(tSafe, m.ms, "var(--good)")}${dot(tT, target, "var(--accent)")}
   </svg>`;
 }
 
@@ -379,7 +379,7 @@ function renderDetail(m) {
       ${verdict}${heat}
       <div class="two">
         <div class="card chart"><h2>Drying curve</h2>${curveSVG(m, t)}
-          <div class="legend"><span><i style="background:var(--sky)"></i>moisture</span><span><i style="background:var(--green)"></i>safe to store</span>${nT != null && t !== m.ms ? `<span><i style="background:var(--amber)"></i>your target</span>` : ""}<span><i style="background:var(--red)"></i>lowest possible</span></div>
+          <div class="legend"><span><i style="background:var(--sky)"></i>moisture</span><span><i style="background:var(--good)"></i>safe to store</span>${nT != null && t !== m.ms ? `<span><i style="background:var(--accent)"></i>your target</span>` : ""}<span><i style="background:var(--red)"></i>lowest possible</span></div>
         </div>
         <div style="display:grid;gap:16px;align-content:start">
           ${F ? `<div class="card plan"><span class="tag">With the ${esc(state.loc?.name || "")} forecast</span>

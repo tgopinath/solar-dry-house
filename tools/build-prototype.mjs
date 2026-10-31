@@ -3,6 +3,7 @@
 //   web/     the web app (asks for the place)
 //   mobile/  the mobile app (reads the device location)
 //   images/  photos shared by both
+//   kolam/   design tokens for the frame and case-study pages
 //   mobile.html, case-study.html, shots/
 // node tools/build-prototype.mjs           build files
 // node tools/build-prototype.mjs --shots   also capture screenshots with headless Chrome
@@ -13,13 +14,14 @@ import { spawn, execFileSync } from "node:child_process";
 const ROOT = path.resolve(import.meta.dirname, "..");
 const OUT = path.join(ROOT, "prototype");
 const CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
-const APP_FILES = ["styles.css", "app.js", "materials.js", "weather.js", "location.js", "manifest.webmanifest", "icons"];
+const APP_FILES = ["kolam", "styles.css", "app.js", "materials.js", "weather.js", "location.js", "manifest.webmanifest", "icons"];
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 const cp = (src, dst) => fs.cpSync(src, dst, { recursive: true });
-for (const d of ["web", "mobile", "images"]) fs.rmSync(path.join(OUT, d), { recursive: true, force: true });
+for (const d of ["web", "mobile", "images", "kolam"]) fs.rmSync(path.join(OUT, d), { recursive: true, force: true });
 fs.mkdirSync(OUT, { recursive: true });
 cp(path.join(ROOT, "images"), path.join(OUT, "images"));
+cp(path.join(ROOT, "kolam"), path.join(OUT, "kolam")); // tokens for mobile.html and case-study.html
 
 for (const mode of ["web", "mobile"]) {
   const dir = path.join(OUT, mode);
