@@ -9,3 +9,4 @@ android-app/android/capacitor-cordova-android-plugins/build/
 android-app/android/local.properties
 .vercel
 .env*
+*.apk
