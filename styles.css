@@ -41,7 +41,7 @@ svg{flex:none}
 /* ---------- header and navigation ---------- */
 /* The blur sits on a pseudo-element: a backdrop-filter on .top itself would trap the fixed phone tab bar inside the header. */
 .top::before{content:"";position:absolute;inset:0;z-index:-1;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px)}
-.top{position:sticky;top:0;z-index:30;isolation:isolate;padding:calc(env(safe-area-inset-top,0px) + 10px) 20px 10px;display:flex;align-items:center;gap:16px}
+.top{position:sticky;top:0;z-index:30;isolation:isolate;padding:calc(env(safe-area-inset-top,0px) + 10px) var(--gutter) 10px;display:flex;align-items:center;gap:16px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:900;font-size:17px;letter-spacing:-.01em;margin-right:auto}
 .brand img{border-radius:var(--radius-sm)}
 .tabs{display:flex;gap:2px;background:var(--card);padding:4px;border-radius:var(--radius-pill);border:1px solid var(--line);box-shadow:var(--shadow)}
@@ -58,7 +58,9 @@ svg{flex:none}
   .tabs a svg{width:22px;height:22px}
   main{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 110px)!important}
 }
-main{max-width:1080px;margin:0 auto;padding:8px 20px 56px;outline:none}
+/* Full-width layout: content fills the screen with a fluid side gutter; long text keeps its own measure */
+:root{--gutter:clamp(20px,3vw,48px)}
+main{width:100%;margin:0;padding:8px var(--gutter) 56px;outline:none}
 @media (max-width:759px){main{padding-inline:16px}}
 .page{display:grid;gap:24px;padding-top:8px}
 .page-head{display:grid;gap:6px}
@@ -86,7 +88,7 @@ main{max-width:1080px;margin:0 auto;padding:8px 20px 56px;outline:none}
 .search{position:relative}
 .search svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);width:20px;height:20px;fill:none;stroke:var(--faint);stroke-width:2}
 .search .input{padding-left:46px;box-shadow:var(--shadow)}
-.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin-inline:-20px;padding:2px 20px}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin-inline:calc(-1*var(--gutter));padding:2px var(--gutter)}
 .chips::-webkit-scrollbar{display:none}
 @media (max-width:759px){.chips{margin-inline:-16px;padding-inline:16px}}
 .chip{flex:0 0 auto;font:700 14px var(--font-sans);min-height:var(--size-control-md);border:1px solid var(--line);background:var(--card);box-shadow:var(--shadow);color:var(--ink);padding:8px 16px;border-radius:var(--radius-pill);cursor:pointer;white-space:nowrap}
@@ -151,7 +153,7 @@ main{max-width:1080px;margin:0 auto;padding:8px 20px 56px;outline:none}
 .hero-stats b.hot{color:var(--red)}
 .hero-tip{display:flex;gap:10px;align-items:flex-start;background:var(--hero-glass);border-radius:var(--radius-lg);padding:12px 14px;font-size:15px;font-weight:700}
 .hero-tip svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;margin-top:1px}
-.days{display:grid;grid-auto-flow:column;grid-auto-columns:88px;gap:10px;overflow-x:auto;scrollbar-width:none;margin-inline:-20px;padding:4px 20px 8px;scroll-snap-type:x proximity}
+.days{display:grid;grid-auto-flow:column;grid-auto-columns:88px;gap:10px;overflow-x:auto;scrollbar-width:none;margin-inline:calc(-1*var(--gutter));padding:4px var(--gutter) 8px;scroll-padding-inline:var(--gutter);scroll-snap-type:x proximity}
 .days::-webkit-scrollbar{display:none}
 @media (max-width:759px){.days{margin-inline:-16px;padding-inline:16px}}
 .dayc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow);padding:12px 8px;display:grid;justify-items:center;gap:6px;text-align:center;scroll-snap-align:start}
@@ -165,7 +167,7 @@ main{max-width:1080px;margin:0 auto;padding:8px 20px 56px;outline:none}
 .best{display:flex;gap:14px;align-items:flex-start}
 .best .ic{width:48px;height:48px;border-radius:var(--radius-md);background:var(--amber-soft);display:grid;place-items:center;flex:none}
 .best .ic svg{width:24px;height:24px;fill:none;stroke:var(--amber);stroke-width:2}
-.rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(150px,170px);gap:12px;overflow-x:auto;scrollbar-width:none;margin-inline:-20px;padding:4px 20px 10px;scroll-snap-type:x proximity}
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(150px,170px);gap:12px;overflow-x:auto;scrollbar-width:none;margin-inline:calc(-1*var(--gutter));padding:4px var(--gutter) 10px;scroll-padding-inline:var(--gutter);scroll-snap-type:x proximity}
 .rail::-webkit-scrollbar{display:none}
 @media (max-width:759px){.rail{margin-inline:-16px;padding-inline:16px}}
 .src{font-size:13px;color:var(--faint)}
@@ -208,6 +210,7 @@ main{max-width:1080px;margin:0 auto;padding:8px 20px 56px;outline:none}
 .key small{font-size:12.5px;color:var(--faint)}
 .two{display:grid;gap:16px;grid-template-columns:1fr}
 @media (min-width:860px){.two{grid-template-columns:1.2fr 1fr}}
+@media (min-width:1400px){.two{grid-template-columns:minmax(0,760px) minmax(0,1fr)}}
 .plan .row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
 .plan .row:first-of-type{border-top:0;padding-top:4px}
 .plan .row span{color:var(--muted);font-size:15px}

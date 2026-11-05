@@ -1,5 +1,5 @@
 // Network first, so updates show at once; the cached copy keeps the app working offline.
-const VERSION = "sdh-v4-auth";
+const VERSION = "sdh-v5-wide";
 const SHELL = ["./", "index.html", "kolam/tokens.css", "styles.css", "app.js", "materials.js", "weather.js", "location.js", "auth.js", "manifest.webmanifest", "images/credits.json", "icons/icon.svg", "icons/icon-192.png", "icons/icon-512.png"];
 
 self.addEventListener("install", (e) => {
