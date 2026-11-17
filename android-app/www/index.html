@@ -1,37 +1,12 @@
 <!doctype html>
-<html lang="en" data-mode="mobile">
+<html lang="en" data-mode="mobile" data-m3-primary="#0077b6">
 <head>
-<script>
-/* Android app: answer the page's location requests with Capacitor's native Geolocation plugin,
-   which is far more reliable than the WebView's built-in geolocation. */
-(function () {
-  if (!navigator.geolocation) return;
-  var web = navigator.geolocation.getCurrentPosition.bind(navigator.geolocation);
-  navigator.geolocation.getCurrentPosition = function (ok, fail, opts) {
-    var C = window.Capacitor, G = C && C.isNativePlatform && C.isNativePlatform() && C.Plugins && C.Plugins.Geolocation;
-    if (!G) return web(ok, fail, opts);
-    opts = opts || {};
-    (async function () {
-      try {
-        var perm = await G.checkPermissions();
-        if (perm.location !== "granted" && perm.coarseLocation !== "granted") perm = await G.requestPermissions();
-        if (perm.location !== "granted" && perm.coarseLocation !== "granted") throw { code: 1, message: "Location permission denied" };
-        var pos;
-        try { pos = await G.getCurrentPosition({ enableHighAccuracy: !!opts.enableHighAccuracy, timeout: 10000, maximumAge: opts.maximumAge || 0 }); }
-        catch (first) { pos = await G.getCurrentPosition({ enableHighAccuracy: true, timeout: 25000, maximumAge: opts.maximumAge || 0 }); } // GPS fallback
-        ok({ coords: pos.coords, timestamp: pos.timestamp });
-      } catch (e) { if (fail) fail({ code: e && e.code === 1 ? 1 : 2, message: String((e && e.message) || e) }); }
-    })();
-  };
-})();
-</script>
-
+<script src="geo-bridge.js"></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Solar Dry House Mobile</title>
 <meta name="description" content="Drying times, live weather and a materials guide for a solar dry house.">
-<meta name="theme-color" content="#F6F7F3" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#111613" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#0077B6">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
@@ -40,8 +15,11 @@
 <meta name="apple-mobile-web-app-title" content="Dry House">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&display=swap">
+<script src="kolam/m3/kolam-m3.js"></script>
+<link rel="stylesheet" href="kolam/tokens.css">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="kolam/m3/kolam-m3.css">
 </head>
 <body>
 <header class="top">

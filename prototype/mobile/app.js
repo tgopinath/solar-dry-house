@@ -69,6 +69,7 @@ function setPlace(p) {
   state.loc = p; savePlace(p); state.locError = null;
   state.weather = null; state.forecast = null;
   showPlace(); if (sheet.open) sheet.close();
+  m3Sync();
   if (!location.hash || location.hash === "#home") render(); else location.hash = "home";
   loadWeather(true);
 }
@@ -108,6 +109,32 @@ document.getElementById("placeGps").addEventListener("click", async (e) => {
 });
 sheet.addEventListener("click", (e) => { if (e.target === sheet) sheet.close(); });
 
+/* ---------- Android app mode (Material Design 3, from the shared Kolam M3 kit) ----------
+   Only inside the Android app (or ?app=android). In a browser KolamM3.init returns a stub and nothing changes. */
+if (window.KolamM3?.isAndroid && !location.hash) history.replaceState(null, "", "#home");
+const m3 = window.KolamM3 ? KolamM3.init({
+  primary: "#0077b6", title: "Solar Dry House", home: "#home",
+  destinations: [
+    { id: "home", label: "Today", icon: "wb_sunny", href: "#home" },
+    { id: "materials", label: "Materials", icon: "eco", href: "#materials" },
+    { id: "calc", label: "Batch", icon: "scale", href: "#calc" },
+    { id: "guide", label: "Guide", icon: "menu_book", href: "#guide" },
+  ],
+  actions: [{ icon: "location_on", label: "Change place", onClick: () => placeBtn.click() }],
+  hide: [".top"],
+}) : { enabled: false, setTitle() {}, setActive() {}, setBack() {} };
+function m3Sync() {
+  if (!m3.enabled) return;
+  const path = state.route?.path || "home";
+  const title = document.title.replace(/ · Solar Dry House$/, "");
+  // The kit resets its overrides on every route change, so set ours just after it.
+  setTimeout(() => {
+    m3.setTitle(path === "home" ? (state.loc ? state.loc.name : "Solar Dry House") : title);
+    m3.setActive(path === "m" ? "materials" : path);
+    m3.setBack(path === "m" ? "#materials" : false);
+  });
+}
+
 /* ---------- weather ---------- */
 async function loadWeather(force = false) {
   if (!state.loc || state.loading) return;
@@ -131,6 +158,7 @@ function route() {
   document.querySelectorAll(".tabs a").forEach((a) => (a.dataset.tab === tab ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current")));
   state.route = { path, arg };
   render();
+  m3Sync();
   window.scrollTo(0, 0);
 }
 function render() {

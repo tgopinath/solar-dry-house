@@ -41,7 +41,7 @@ svg{flex:none}
 /* ---------- header and navigation ---------- */
 /* The blur sits on a pseudo-element: a backdrop-filter on .top itself would trap the fixed phone tab bar inside the header. */
 .top::before{content:"";position:absolute;inset:0;z-index:-1;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px)}
-.top{position:sticky;top:0;z-index:30;isolation:isolate;padding:calc(env(safe-area-inset-top,0px) + 10px) 20px 10px;display:flex;align-items:center;gap:16px}
+.top{position:sticky;top:0;z-index:30;isolation:isolate;padding:calc(env(safe-area-inset-top,0px) + 10px) var(--gutter) 10px;display:flex;align-items:center;gap:16px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:900;font-size:17px;letter-spacing:-.01em;margin-right:auto}
 .brand img{border-radius:var(--radius-sm)}
 .tabs{display:flex;gap:2px;background:var(--card);padding:4px;border-radius:var(--radius-pill);border:1px solid var(--line);box-shadow:var(--shadow)}
@@ -58,7 +58,9 @@ svg{flex:none}
   .tabs a svg{width:22px;height:22px}
   main{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 110px)!important}
 }
-main{max-width:1080px;margin:0 auto;padding:8px 20px 56px;outline:none}
+/* Full-width layout: content fills the screen with a fluid side gutter; long text keeps its own measure */
+:root{--gutter:clamp(20px,3vw,48px)}
+main{width:100%;margin:0;padding:8px var(--gutter) 56px;outline:none}
 @media (max-width:759px){main{padding-inline:16px}}
 .page{display:grid;gap:24px;padding-top:8px}
 .page-head{display:grid;gap:6px}
@@ -86,7 +88,7 @@ main{max-width:1080px;margin:0 auto;padding:8px 20px 56px;outline:none}
 .search{position:relative}
 .search svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);width:20px;height:20px;fill:none;stroke:var(--faint);stroke-width:2}
 .search .input{padding-left:46px;box-shadow:var(--shadow)}
-.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin-inline:-20px;padding:2px 20px}
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin-inline:calc(-1*var(--gutter));padding:2px var(--gutter)}
 .chips::-webkit-scrollbar{display:none}
 @media (max-width:759px){.chips{margin-inline:-16px;padding-inline:16px}}
 .chip{flex:0 0 auto;font:700 14px var(--font-sans);min-height:var(--size-control-md);border:1px solid var(--line);background:var(--card);box-shadow:var(--shadow);color:var(--ink);padding:8px 16px;border-radius:var(--radius-pill);cursor:pointer;white-space:nowrap}
@@ -151,7 +153,7 @@ main{max-width:1080px;margin:0 auto;padding:8px 20px 56px;outline:none}
 .hero-stats b.hot{color:var(--red)}
 .hero-tip{display:flex;gap:10px;align-items:flex-start;background:var(--hero-glass);border-radius:var(--radius-lg);padding:12px 14px;font-size:15px;font-weight:700}
 .hero-tip svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;margin-top:1px}
-.days{display:grid;grid-auto-flow:column;grid-auto-columns:88px;gap:10px;overflow-x:auto;scrollbar-width:none;margin-inline:-20px;padding:4px 20px 8px;scroll-snap-type:x proximity}
+.days{display:grid;grid-auto-flow:column;grid-auto-columns:88px;gap:10px;overflow-x:auto;scrollbar-width:none;margin-inline:calc(-1*var(--gutter));padding:4px var(--gutter) 8px;scroll-padding-inline:var(--gutter);scroll-snap-type:x proximity}
 .days::-webkit-scrollbar{display:none}
 @media (max-width:759px){.days{margin-inline:-16px;padding-inline:16px}}
 .dayc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow);padding:12px 8px;display:grid;justify-items:center;gap:6px;text-align:center;scroll-snap-align:start}
@@ -165,7 +167,7 @@ main{max-width:1080px;margin:0 auto;padding:8px 20px 56px;outline:none}
 .best{display:flex;gap:14px;align-items:flex-start}
 .best .ic{width:48px;height:48px;border-radius:var(--radius-md);background:var(--amber-soft);display:grid;place-items:center;flex:none}
 .best .ic svg{width:24px;height:24px;fill:none;stroke:var(--amber);stroke-width:2}
-.rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(150px,170px);gap:12px;overflow-x:auto;scrollbar-width:none;margin-inline:-20px;padding:4px 20px 10px;scroll-snap-type:x proximity}
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(150px,170px);gap:12px;overflow-x:auto;scrollbar-width:none;margin-inline:calc(-1*var(--gutter));padding:4px var(--gutter) 10px;scroll-padding-inline:var(--gutter);scroll-snap-type:x proximity}
 .rail::-webkit-scrollbar{display:none}
 @media (max-width:759px){.rail{margin-inline:-16px;padding-inline:16px}}
 .src{font-size:13px;color:var(--faint)}
@@ -208,6 +210,7 @@ main{max-width:1080px;margin:0 auto;padding:8px 20px 56px;outline:none}
 .key small{font-size:12.5px;color:var(--faint)}
 .two{display:grid;gap:16px;grid-template-columns:1fr}
 @media (min-width:860px){.two{grid-template-columns:1.2fr 1fr}}
+@media (min-width:1400px){.two{grid-template-columns:minmax(0,760px) minmax(0,1fr)}}
 .plan .row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
 .plan .row:first-of-type{border-top:0;padding-top:4px}
 .plan .row span{color:var(--muted);font-size:15px}
@@ -279,3 +282,42 @@ td:first-child{font-weight:700}
   .page{animation:rise .28s ease both}
   @keyframes rise{from{opacity:.001;transform:translateY(6px)}to{opacity:1;transform:none}}
 }
+
+/* ---------- Android app mode (Material Design 3) ----------
+   kolam/m3/kolam-m3.css (loaded after this file) builds the app bar and navigation bar and points the Kolam
+   tokens at M3 colour roles. Here the app's own components get M3 shapes, surfaces and type.
+   Only html.k-android (inside the Android app) is touched; the website keeps its Kolam look. */
+html.k-android body{background:var(--md-sys-color-surface)}
+html.k-android main{padding:8px 16px 24px!important}
+html.k-android .dhero .back{display:none}
+html.k-android h1{font:var(--md-sys-typescale-headline-medium);letter-spacing:0}
+html.k-android .dhero .over h1{font:var(--md-sys-typescale-headline-large)}
+html.k-android h2{font:var(--md-sys-typescale-title-large)}
+html.k-android .eyebrow{font:var(--md-sys-typescale-label-medium);letter-spacing:.5px;color:var(--md-sys-color-primary)}
+/* cards: M3 filled / elevated cards, no Kolam borders */
+html.k-android :is(.card,.mcard,.key,.big>div,.dayc,.diagram,.steps,.table-wrap,.faq details){border-color:transparent;background:var(--md-sys-color-surface-container-low);box-shadow:none;border-radius:var(--md-sys-shape-corner-medium)}
+html.k-android .mcard{box-shadow:var(--md-sys-elevation-level1);border-radius:var(--md-sys-shape-corner-medium)}
+html.k-android .mcard:hover{transform:none}
+html.k-android .dayc.today{outline:0;background:var(--md-sys-color-secondary-container);color:var(--md-sys-color-on-secondary-container)}
+html.k-android :is(.hero,.dhero){border-radius:var(--md-sys-shape-corner-extra-large);box-shadow:none}
+html.k-android .hero-stats div,html.k-android .hero-tip{border-radius:var(--md-sys-shape-corner-medium);backdrop-filter:none}
+html.k-android .note{border-radius:var(--md-sys-shape-corner-medium)}
+/* filter chips */
+html.k-android .chip{min-height:32px;height:32px;padding:0 16px;border-radius:var(--md-sys-shape-corner-small);background:transparent;border:1px solid var(--md-sys-color-outline-variant);color:var(--md-sys-color-on-surface-variant);box-shadow:none;font:var(--md-sys-typescale-label-large)}
+html.k-android .chip[aria-pressed="true"]{background:var(--md-sys-color-secondary-container);border-color:transparent;color:var(--md-sys-color-on-secondary-container)}
+/* segmented buttons */
+html.k-android .seg{background:transparent;padding:0;gap:0;border-radius:var(--md-sys-shape-corner-full);border:1px solid var(--md-sys-color-outline);overflow:hidden}
+html.k-android .seg button{min-height:40px;border-radius:0;font:var(--md-sys-typescale-label-large);color:var(--md-sys-color-on-surface)}
+html.k-android .seg button+button{border-left:1px solid var(--md-sys-color-outline)}
+html.k-android .seg button[aria-pressed="true"]{background:var(--md-sys-color-secondary-container);color:var(--md-sys-color-on-secondary-container);box-shadow:none}
+/* buttons and text fields */
+html.k-android .btn{min-height:40px;border-radius:var(--md-sys-shape-corner-full);padding:10px 24px;font:var(--md-sys-typescale-label-large)}
+html.k-android .btn.ghost{background:var(--md-sys-color-secondary-container);color:var(--md-sys-color-on-secondary-container)}
+html.k-android .icon-btn{background:transparent}
+html.k-android :is(.input,.field input,.field select){min-height:56px;border-radius:var(--md-sys-shape-corner-extra-small);border:1px solid var(--md-sys-color-outline);background:transparent;box-shadow:none}
+html.k-android .search .input{border-radius:var(--md-sys-shape-corner-full);background:var(--md-sys-color-surface-container-high);border-color:transparent}
+html.k-android .places{border-radius:var(--md-sys-shape-corner-medium);background:var(--md-sys-color-surface-container);border-color:transparent}
+/* place sheet: M3 bottom sheet */
+html.k-android .sheet{margin:auto 0 0;max-width:100vw}
+html.k-android .sheet-in{background:var(--md-sys-color-surface-container-low);border-radius:var(--md-sys-shape-corner-extra-large) var(--md-sys-shape-corner-extra-large) 0 0;padding-bottom:calc(var(--md-inset-bottom) + 24px)}
+html.k-android .sheet::backdrop{background:color-mix(in srgb,var(--md-sys-color-scrim) 32%,transparent);backdrop-filter:none}

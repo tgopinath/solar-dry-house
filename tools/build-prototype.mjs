@@ -28,7 +28,7 @@ for (const mode of ["web", "mobile"]) {
   fs.mkdirSync(dir, { recursive: true });
   for (const f of APP_FILES) cp(path.join(ROOT, f), path.join(dir, f));
   let html = fs.readFileSync(path.join(ROOT, "index.html"), "utf8");
-  html = html.replace('<html lang="en">', `<html lang="en" data-mode="${mode}">`);
+  html = html.replace('<html lang="en"', `<html lang="en" data-mode="${mode}"`);
   html = html.replace('<script type="module" src="app.js"></script>', '<script>window.SDH_ASSETS = "../"; window.SDH_NO_SW = true;</script>\n<script type="module" src="app.js"></script>');
   html = html.replace("<title>Solar Dry House</title>", `<title>Solar Dry House ${mode === "web" ? "Web" : "Mobile"}</title>`);
   fs.writeFileSync(path.join(dir, "index.html"), html);

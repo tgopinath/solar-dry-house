@@ -1,1 +1,3 @@
-{ "appId": "com.gopinath.solardryhouse", "appName": "Solar Dry House", "webDir": "www", "android": { "allowMixedContent": false } }
+{ "appId": "com.gopinath.solardryhouse", "appName": "Solar Dry House", "webDir": "www",
+  "android": { "allowMixedContent": false, "appendUserAgent": "SolarDryHouse-Android" },
+  "plugins": { "SystemBars": { "insetsHandling": "css" } } }

@@ -282,3 +282,42 @@ td:first-child{font-weight:700}
   .page{animation:rise .28s ease both}
   @keyframes rise{from{opacity:.001;transform:translateY(6px)}to{opacity:1;transform:none}}
 }
+
+/* ---------- Android app mode (Material Design 3) ----------
+   kolam/m3/kolam-m3.css (loaded after this file) builds the app bar and navigation bar and points the Kolam
+   tokens at M3 colour roles. Here the app's own components get M3 shapes, surfaces and type.
+   Only html.k-android (inside the Android app) is touched; the website keeps its Kolam look. */
+html.k-android body{background:var(--md-sys-color-surface)}
+html.k-android main{padding:8px 16px 24px!important}
+html.k-android .dhero .back{display:none}
+html.k-android h1{font:var(--md-sys-typescale-headline-medium);letter-spacing:0}
+html.k-android .dhero .over h1{font:var(--md-sys-typescale-headline-large)}
+html.k-android h2{font:var(--md-sys-typescale-title-large)}
+html.k-android .eyebrow{font:var(--md-sys-typescale-label-medium);letter-spacing:.5px;color:var(--md-sys-color-primary)}
+/* cards: M3 filled / elevated cards, no Kolam borders */
+html.k-android :is(.card,.mcard,.key,.big>div,.dayc,.diagram,.steps,.table-wrap,.faq details){border-color:transparent;background:var(--md-sys-color-surface-container-low);box-shadow:none;border-radius:var(--md-sys-shape-corner-medium)}
+html.k-android .mcard{box-shadow:var(--md-sys-elevation-level1);border-radius:var(--md-sys-shape-corner-medium)}
+html.k-android .mcard:hover{transform:none}
+html.k-android .dayc.today{outline:0;background:var(--md-sys-color-secondary-container);color:var(--md-sys-color-on-secondary-container)}
+html.k-android :is(.hero,.dhero){border-radius:var(--md-sys-shape-corner-extra-large);box-shadow:none}
+html.k-android .hero-stats div,html.k-android .hero-tip{border-radius:var(--md-sys-shape-corner-medium);backdrop-filter:none}
+html.k-android .note{border-radius:var(--md-sys-shape-corner-medium)}
+/* filter chips */
+html.k-android .chip{min-height:32px;height:32px;padding:0 16px;border-radius:var(--md-sys-shape-corner-small);background:transparent;border:1px solid var(--md-sys-color-outline-variant);color:var(--md-sys-color-on-surface-variant);box-shadow:none;font:var(--md-sys-typescale-label-large)}
+html.k-android .chip[aria-pressed="true"]{background:var(--md-sys-color-secondary-container);border-color:transparent;color:var(--md-sys-color-on-secondary-container)}
+/* segmented buttons */
+html.k-android .seg{background:transparent;padding:0;gap:0;border-radius:var(--md-sys-shape-corner-full);border:1px solid var(--md-sys-color-outline);overflow:hidden}
+html.k-android .seg button{min-height:40px;border-radius:0;font:var(--md-sys-typescale-label-large);color:var(--md-sys-color-on-surface)}
+html.k-android .seg button+button{border-left:1px solid var(--md-sys-color-outline)}
+html.k-android .seg button[aria-pressed="true"]{background:var(--md-sys-color-secondary-container);color:var(--md-sys-color-on-secondary-container);box-shadow:none}
+/* buttons and text fields */
+html.k-android .btn{min-height:40px;border-radius:var(--md-sys-shape-corner-full);padding:10px 24px;font:var(--md-sys-typescale-label-large)}
+html.k-android .btn.ghost{background:var(--md-sys-color-secondary-container);color:var(--md-sys-color-on-secondary-container)}
+html.k-android .icon-btn{background:transparent}
+html.k-android :is(.input,.field input,.field select){min-height:56px;border-radius:var(--md-sys-shape-corner-extra-small);border:1px solid var(--md-sys-color-outline);background:transparent;box-shadow:none}
+html.k-android .search .input{border-radius:var(--md-sys-shape-corner-full);background:var(--md-sys-color-surface-container-high);border-color:transparent}
+html.k-android .places{border-radius:var(--md-sys-shape-corner-medium);background:var(--md-sys-color-surface-container);border-color:transparent}
+/* place sheet: M3 bottom sheet */
+html.k-android .sheet{margin:auto 0 0;max-width:100vw}
+html.k-android .sheet-in{background:var(--md-sys-color-surface-container-low);border-radius:var(--md-sys-shape-corner-extra-large) var(--md-sys-shape-corner-extra-large) 0 0;padding-bottom:calc(var(--md-inset-bottom) + 24px)}
+html.k-android .sheet::backdrop{background:color-mix(in srgb,var(--md-sys-color-scrim) 32%,transparent);backdrop-filter:none}
