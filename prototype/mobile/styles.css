@@ -321,3 +321,51 @@ html.k-android .places{border-radius:var(--md-sys-shape-corner-medium);backgroun
 html.k-android .sheet{margin:auto 0 0;max-width:100vw}
 html.k-android .sheet-in{background:var(--md-sys-color-surface-container-low);border-radius:var(--md-sys-shape-corner-extra-large) var(--md-sys-shape-corner-extra-large) 0 0;padding-bottom:calc(var(--md-inset-bottom) + 24px)}
 html.k-android .sheet::backdrop{background:color-mix(in srgb,var(--md-sys-color-scrim) 32%,transparent);backdrop-filter:none}
+
+/* ---------- iOS app mode (Apple HIG) ----------
+   kolam/ios/kolam-ios.css (loaded after this file) builds the navigation bar, tab bar and sheets and maps the
+   Kolam tokens onto iOS system colours. Here the app's own components get iOS shapes, materials and type.
+   Only html.k-ios (inside the iOS app, or ?app=ios) is touched; the website keeps its Kolam look. */
+html.k-ios body{background:var(--ios-grouped)}
+html.k-ios .top,html.k-ios .dhero .back{display:none!important} /* navigation bar + tab bar + edge swipe replace them */
+html.k-ios main{padding:4px 16px 32px!important}
+html.k-ios h1{font:700 28px/1.214 var(--ios-font-display);letter-spacing:.013em}
+html.k-ios .dhero .over h1{font:700 34px/1.2 var(--ios-font-display);letter-spacing:.011em}
+html.k-ios h2{font:700 22px/1.273 var(--ios-font-display);letter-spacing:-.012em}
+html.k-ios h3{font:600 17px/1.294 var(--ios-font);letter-spacing:-.024em}
+html.k-ios .eyebrow{font:400 13px/1.385 var(--ios-font);letter-spacing:0;text-transform:none;color:var(--ios-label2)}
+html.k-ios .dhero .over .eyebrow{color:#fff}
+html.k-ios .page-head .eyebrow{display:none} /* the navigation bar already names the tab */
+/* cards: inset grouped surfaces, no borders or shadows */
+html.k-ios :is(.card,.mcard,.key,.big>div,.dayc,.diagram,.steps,.table-wrap,.faq details){border-color:transparent;background:var(--ios-grouped2);box-shadow:none;border-radius:var(--ios-radius-card)}
+html.k-ios .mcard:hover{transform:none}
+html.k-ios .dayc.today{outline:2px solid var(--ios-tint);outline-offset:-2px}
+html.k-ios :is(.hero,.dhero){border-radius:var(--ios-radius-card);box-shadow:none}
+html.k-ios .hero-stats div,html.k-ios .hero-tip{border-radius:16px}
+html.k-ios .note{border-radius:16px}
+html.k-ios :is(a,button):active{opacity:.6}
+/* filter chips: gray capsules, the selected one tinted (HIG has no chips) */
+html.k-ios .chip{min-height:34px;padding:0 14px;border:0;box-shadow:none;background:var(--ios-fill3);color:var(--ios-label);font:500 15px/34px var(--ios-font);letter-spacing:-.015em}
+html.k-ios .chip[aria-pressed="true"]{background:var(--ios-tint-fill);color:var(--ios-on-tint)}
+/* segmented control */
+html.k-ios .seg{background:var(--ios-fill3);border-radius:999px;padding:2px;gap:0}
+html.k-ios .seg button{min-height:32px;border-radius:999px;font:500 13px/1.2 var(--ios-font);color:var(--ios-label)}
+html.k-ios .seg button[aria-pressed="true"]{background:var(--ios-elevated,#fff);color:var(--ios-label);box-shadow:0 3px 8px rgba(0,0,0,.12),0 1px 1px rgba(0,0,0,.04);font-weight:600}
+@media (prefers-color-scheme:dark){html.k-ios:not([data-theme="light"]) .seg button[aria-pressed="true"]{background:#636366}}
+/* buttons: filled and tinted capsules */
+html.k-ios .btn{min-height:50px;padding:0 20px;border:0;border-radius:999px;background:var(--ios-tint-fill);color:var(--ios-on-tint);font:600 17px/22px var(--ios-font);letter-spacing:-.024em}
+html.k-ios .btn.ghost{background:color-mix(in srgb,var(--ios-tint-fill) 15%,transparent);color:var(--ios-tint)}
+html.k-ios .btn.ghost svg{stroke:currentColor}
+html.k-ios .icon-btn{border:0;background:var(--ios-fill3);color:var(--ios-label);border-radius:50%}
+/* text and search fields: filled, no outline */
+html.k-ios :is(.input,.field input,.field select){min-height:44px;border:0;border-radius:var(--ios-radius-field);background:var(--ios-grouped2);box-shadow:none;font:400 17px/1.294 var(--ios-font);color:var(--ios-label)}
+html.k-ios .search .input{border-radius:999px;background:var(--ios-fill3);padding-left:40px}
+html.k-ios .search svg{left:13px;width:18px;height:18px;stroke:var(--ios-label2)}
+html.k-ios .places{border:0;border-radius:var(--ios-radius-row);background:var(--ios-grouped2)}
+html.k-ios .places li+li{border-top:.5px solid var(--ios-sep);margin-left:16px}
+/* the place picker as an iOS sheet */
+html.k-ios .sheet{margin:auto 0 0;max-width:100vw}
+html.k-ios .sheet-in{background:var(--ios-grouped);border-radius:var(--ios-radius-sheet) var(--ios-radius-sheet) 0 0;padding:8px 16px calc(env(safe-area-inset-bottom,0px) + 20px)}
+html.k-ios .sheet-in::before{content:"";justify-self:center;width:36px;height:5px;border-radius:3px;background:var(--ios-fill,rgba(120,120,128,.3))}
+html.k-ios .sheet-head h2{font:600 17px/22px var(--ios-font)}
+html.k-ios .sheet::backdrop{background:var(--ios-scrim,rgba(0,0,0,.2));backdrop-filter:none}

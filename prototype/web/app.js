@@ -111,8 +111,35 @@ sheet.addEventListener("click", (e) => { if (e.target === sheet) sheet.close(); 
 
 /* ---------- Android app mode (Material Design 3, from the shared Kolam M3 kit) ----------
    Only inside the Android app (or ?app=android). In a browser KolamM3.init returns a stub and nothing changes. */
-if (window.KolamM3?.isAndroid && !location.hash) history.replaceState(null, "", "#home");
-const m3 = window.KolamM3 ? KolamM3.init({
+/* ---------- iOS app mode (Apple HIG, from the shared Kolam iOS kit) ----------
+   Only inside the iOS app (SolarDryHouse-iOS shell) or with ?app=ios; KolamIOS.init returns null in a browser.
+   If both kits detect, iOS wins and the M3 kit is not started. */
+const svgIcon = (inner) => `<svg class="ios-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${inner}</svg>`;
+const IOS_TABS = [
+  { id: "home", label: "Today", icon: "sun.max", href: "#home" },
+  { id: "materials", label: "Materials", icon: "leaf", href: "#materials" },
+  { id: "calc", label: "Batch", icon: svgIcon('<path d="M6 8h12l-1.2 11.2a2 2 0 0 1-2 1.8H9.2a2 2 0 0 1-2-1.8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/>'), href: "#calc" },
+  { id: "guide", label: "Guide", icon: svgIcon('<path d="M3 20h18"/><path d="M5 20V11q7-8 14 0v9"/><path d="M9 15h6"/>'), href: "#guide" },
+];
+const ios = window.KolamIOS ? KolamIOS.init({
+  appName: "Solar Dry House", uaTokens: ["SolarDryHouse-iOS"],
+  tint: { light: "#0070AC", dark: "#5AB8F0" },
+  tabs: IOS_TABS, currentTab: "home", content: "#view",
+}) : null;
+if (ios) { document.documentElement.classList.remove("k-android", "k-app"); if (!location.hash) history.replaceState(null, "", "#home"); }
+function iosSync() {
+  if (!ios) return;
+  const path = state.route?.path || "home";
+  const title = document.title.replace(/ · Solar Dry House$/, "");
+  const actions = [{ id: "iosPlace", icon: svgIcon('<path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>'), label: "Change place", onClick: () => placeBtn.click() }];
+  KolamIOS.tabBar.select(path === "m" ? "materials" : path);
+  if (path === "m") KolamIOS.navBar.set({ title, back: { label: "Materials", onClick: () => (history.length > 1 ? history.back() : (location.hash = "materials")) }, actions, keepTitle: true });
+  else KolamIOS.navBar.set({ title: path === "home" ? (state.loc ? state.loc.name : "Solar Dry House") : (IOS_TABS.find((t) => t.id === path)?.label || title), large: true, actions: state.loc ? actions : [], keepTitle: true });
+  KolamIOS.enhance(view);
+}
+
+if (!ios && window.KolamM3?.isAndroid && !location.hash) history.replaceState(null, "", "#home");
+const m3 = window.KolamM3 && !ios ? KolamM3.init({
   primary: "#0077b6", title: "Solar Dry House", home: "#home",
   destinations: [
     { id: "home", label: "Today", icon: "wb_sunny", href: "#home" },
@@ -124,6 +151,7 @@ const m3 = window.KolamM3 ? KolamM3.init({
   hide: [".top"],
 }) : { enabled: false, setTitle() {}, setActive() {}, setBack() {} };
 function m3Sync() {
+  iosSync();
   if (!m3.enabled) return;
   const path = state.route?.path || "home";
   const title = document.title.replace(/ · Solar Dry House$/, "");
